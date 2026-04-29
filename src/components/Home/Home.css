@@ -1,0 +1,17 @@
+.scroll-x-no-bar {
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+.scroll-x-no-bar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.scroll-y-no-bar {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.scroll-y-no-bar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}

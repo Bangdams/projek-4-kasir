@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Astragon";
+  src: url("./assets/fonts/Astragon-Demo.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mother-Signature";
+  src: url("./assets/fonts/Mother-Signature.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RekgivaDemo";
+  src: url("./assets/fonts/RekgivaDemo-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  color: white;
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+  }
+}
