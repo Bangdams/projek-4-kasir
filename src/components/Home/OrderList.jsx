@@ -61,6 +61,8 @@ export function OrderList({
   const isChargeDisabled =
     (active === "Cash" && parsedCash < grandTotal) || !active;
 
+  const [seblakNote, setSeblakNote] = useState("");
+
   const handleCharge = () => {
     window.print();
     setIsPrinted(true);
@@ -110,6 +112,8 @@ export function OrderList({
     setCashAmount("");
     setCustomerName("");
     setIsPrinted(false);
+    setSeblakNote("");
+
     if (setIsCartOpen) setIsCartOpen(false);
   };
 
@@ -189,7 +193,14 @@ export function OrderList({
 
                 <div className="w-full font-medium pr-4">
                   <p className="text-md">{item.label}</p>
-                  <div className="flex flex-row justify-between">
+
+                  {item.note && (
+                    <p className="text-xs text-pink-500 italic mt-0.5 line-clamp-1">
+                      * {item.note}
+                    </p>
+                  )}
+
+                  <div className="flex flex-row justify-between mt-1">
                     <p className="font-normal text-gray-600 text-xs">
                       {formatRupiah(item.price)}{" "}
                       <span className="text-xs">| x{item.quantity}</span>
@@ -225,19 +236,33 @@ export function OrderList({
                 </div>
 
                 {hasSeblakInCart && (
-                  <div className="flex flex-row justify-between items-center mb-3">
-                    <p>Level Pedas :</p>
-                    <select
-                      value={spicyLevel}
-                      onChange={(e) => setSpicyLevel(e.target.value)}
-                      className="w-1/2 border border-gray-300 rounded-xl px-3 py-1 text-sm outline-none focus:border-pink-500 text-center"
-                    >
-                      <option value="Level 0 (Tidak Pedas)">Level 0</option>
-                      <option value="Level 1 (Sedang)">Level 1</option>
-                      <option value="Level 2 (Pedas)">Level 2</option>
-                      <option value="Level 3 (Ekstra Pedas)">Level 3</option>
-                    </select>
-                  </div>
+                  <>
+                    <div className="flex flex-row justify-between items-center mb-3">
+                      <p>Level Pedas :</p>
+                      <select
+                        value={spicyLevel}
+                        onChange={(e) => setSpicyLevel(e.target.value)}
+                        className="w-1/2 border border-gray-300 rounded-xl px-3 py-1 text-sm outline-none focus:border-pink-500 text-center"
+                      >
+                        <option value="Level 0 (Tidak Pedas)">Level 0</option>
+                        <option value="Level 1 (Sedang)">Level 1</option>
+                        <option value="Level 2 (Pedas)">Level 2</option>
+                        <option value="Level 3 (Ekstra Pedas)">Level 3</option>
+                      </select>
+                    </div>
+
+                    {/* 3. [BARU] Input Catatan Seblak */}
+                    <div className="flex flex-row justify-between items-center mb-3">
+                      <p>Catatan Seblak :</p>
+                      <input
+                        type="text"
+                        placeholder="Cth: Kuah dikit, manis..."
+                        value={seblakNote}
+                        onChange={(e) => setSeblakNote(e.target.value)}
+                        className="w-1/2 border border-gray-300 rounded-xl px-3 py-1 text-sm outline-none focus:border-pink-500 text-right"
+                      />
+                    </div>
+                  </>
                 )}
 
                 <div className="flex flex-row justify-between mt-5">
@@ -380,6 +405,7 @@ export function OrderList({
         orders={orders}
         parsedCash={parsedCash}
         spicyLevel={spicyLevel}
+        seblakNote={seblakNote}
       />
     </>
   );

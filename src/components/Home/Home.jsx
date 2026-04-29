@@ -13,6 +13,21 @@ import mineralWater from "../../assets/images/mineral-water.png";
 import kapalApiPng from "../../assets/images/kapalApi.png";
 import goodDayPng from "../../assets/images/goodDay.png";
 import nasgor1 from "../../assets/images/nasgor1.png";
+import cikuaKarakter from "../../assets/images/cikuaKarakter.jpeg";
+import dumplingKeju from "../../assets/images/dumplingKeju.png";
+import kerupukTaraje from "../../assets/images/kerupukTaraje.jpeg";
+import kwitiau from "../../assets/images/kwitiau.jpeg";
+import makaroni_1ribu from "../../assets/images/makaroni_1ribu.jpeg";
+import paktoi from "../../assets/images/paktoi.jpeg";
+import pilusCikur from "../../assets/images/pilusCikur.jpeg";
+import rollFish from "../../assets/images/rollFish.jpeg";
+import rollFish2 from "../../assets/images/rollFish2.jpeg";
+import sosis from "../../assets/images/sosis.jpeg";
+import telurPuyuh from "../../assets/images/telurPuyuh.jpeg";
+import baso from "../../assets/images/baso.jpeg";
+import batagorGoreng from "../../assets/images/batagorGoreng.jpeg";
+import ceker from "../../assets/images/ceker.jpeg";
+import otakotak from "../../assets/images/otakotak.png";
 
 import "./Home.css";
 
@@ -206,7 +221,7 @@ export function Home() {
       category: "seblak",
       label: "Mie (1 pcs)",
       image: miePng,
-      price: 1000,
+      price: 2000,
       stock: 100,
     },
     {
@@ -214,21 +229,21 @@ export function Home() {
       category: "seblak",
       label: "Kerupuk (1 bks)",
       image: kerupukPng,
-      price: 2000,
+      price: 1000,
       stock: 100,
     },
     {
       id: 5,
       category: "seblak",
-      label: "Cuangki (3 pcs)",
+      label: "Cuangki (1 bks)",
       image: kerupukPng,
-      price: 2000,
+      price: 1000,
       stock: 100,
     },
     {
       id: 6,
       category: "seblak",
-      label: "Siomay Goreng (5 pcs)",
+      label: "Siomay Goreng (1 bks)",
       image: kerupukPng,
       price: 2000,
       stock: 100,
@@ -247,11 +262,131 @@ export function Home() {
         { id: "t4", label: "Rebus", price: 0 },
       ],
     },
+    {
+      id: 9,
+      category: "seblak",
+      label: "Cikua Karakter (1 pcs)",
+      image: cikuaKarakter,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 10,
+      category: "seblak",
+      label: "Dumpling Keju (1 pcs)",
+      image: dumplingKeju,
+      price: 2500,
+      stock: 100,
+    },
+    {
+      id: 11,
+      category: "seblak",
+      label: "Kerupuk Taraje (1 pcs)",
+      image: kerupukTaraje,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 12,
+      category: "seblak",
+      label: "Kwitiau (1 pcs)",
+      image: kwitiau,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 13,
+      category: "seblak",
+      label: "Makaroni (1 pcs)",
+      image: makaroni_1ribu,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 14,
+      category: "seblak",
+      label: "Pakcoi (1 pcs)",
+      image: paktoi,
+      price: 0,
+      stock: 100,
+    },
+    {
+      id: 15,
+      category: "seblak",
+      label: "Pilus Cikur (1 pcs)",
+      image: pilusCikur,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 16,
+      category: "seblak",
+      label: "RollFish (1 pcs)",
+      image: rollFish,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 17,
+      category: "seblak",
+      label: "rollFish 2 (1 pcs)",
+      image: rollFish2,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 18,
+      category: "seblak",
+      label: "sosis (1 pcs)",
+      image: sosis,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 20,
+      category: "seblak",
+      label: "Telur Puyuh (1 pcs)",
+      image: telurPuyuh,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 21,
+      category: "seblak",
+      label: "Baso Ayam (1 pcs)",
+      image: baso,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 22,
+      category: "seblak",
+      label: "Batagor Goreng (1 bks)",
+      image: batagorGoreng,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 23,
+      category: "seblak",
+      label: "Ceker (1 pcs)",
+      image: ceker,
+      price: 2000,
+      stock: 100,
+    },
+    {
+      id: 24,
+      category: "seblak",
+      label: "Otak Otak (1 pcs)",
+      image: otakotak,
+      price: 3000,
+      stock: 100,
+    },
     // End Seblak
 
     // Menu Minuman
     {
-      id: 8,
+      id: 1010,
       category: "drink",
       label: "Nutrisari",
       image: nutrisariPng,
@@ -259,7 +394,7 @@ export function Home() {
       stock: 300,
     },
     {
-      id: 9,
+      id: 1510,
       category: "drink",
       label: "Good Day",
       image: goodDayPng,
@@ -267,7 +402,7 @@ export function Home() {
       stock: 300,
     },
     {
-      id: 10,
+      id: 1011,
       category: "drink",
       label: "Kapal Api",
       image: kapalApiPng,
@@ -275,7 +410,7 @@ export function Home() {
       stock: 300,
     },
     {
-      id: 11,
+      id: 1110,
       category: "drink",
       label: "Air Putih Botol",
       image: mineralWater,

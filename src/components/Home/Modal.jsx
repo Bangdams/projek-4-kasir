@@ -13,7 +13,6 @@ export function Modal({
   modalMode,
   setMenus,
 }) {
-  // [BARU] State lokal khusus untuk menyimpan add-on yang sedang dipilih di Modal
   const [localAddOns, setLocalAddOns] = useState(choose?.selectedAddOns || []);
 
   // [BARU] Handler untuk checkbox add-on
@@ -27,6 +26,9 @@ export function Modal({
       }
     });
   };
+
+  // 1. [BARU] State untuk menangkap catatan
+  const [note, setNote] = useState(choose?.note || "");
 
   // Method Function Update
   const updateOrder = (choose, count) => {
@@ -57,7 +59,8 @@ export function Modal({
                 quantity: count,
                 selectedAddOns: localAddOns,
                 total: finalTotal,
-              }
+                note: note,
+              } // <-- Tambah note
             : order,
         );
       } else {
@@ -69,7 +72,8 @@ export function Modal({
             quantity: count,
             selectedAddOns: localAddOns,
             total: finalTotal,
-          },
+            note: note,
+          }, // <-- Tambah note
         ];
       }
     });
@@ -155,6 +159,20 @@ export function Modal({
                   </div>
                 </div>
               )}
+
+              {/* Seksi Input Catatan */}
+              <div className="mb-4">
+                <h3 className="font-semibold text-gray-700 mb-2">
+                  Catatan Khusus:
+                </h3>
+                <input
+                  type="text"
+                  placeholder="Cth: Tanpa bawang, pedas dikit, dibungkus..."
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  className="w-full border border-gray-300 rounded-xl px-4 py-2.5 outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 text-sm transition-all"
+                />
+              </div>
 
               {/* Seksi Kuantitas */}
               <div>

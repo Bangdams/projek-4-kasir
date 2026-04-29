@@ -8,6 +8,7 @@ export function Struck({
   change,
   parsedCash,
   spicyLevel,
+  seblakNote,
 }) {
   const hasSeblak = orders.some((item) => item.category === "seblak");
   const hasNasgor = orders.some((item) => item.category === "nasgor");
@@ -31,14 +32,23 @@ export function Struck({
 
       <p className="text-center mb-1">---------------------------------</p>
 
-      {customerName && (
+      {/* Area Informasi Pelanggan & Catatan Global */}
+      {(customerName || hasSeblak) && (
         <>
           <div className="mb-1 text-left font-bold">
-            <p>Pelanggan: {customerName}</p>
-            {hasSeblak && spicyLevel && (
-              <p className="text-pink-600 font-extrabold uppercase mt-1">
-                &gt;&gt; {spicyLevel} &lt;&lt;
-              </p>
+            {customerName && <p>Pelanggan: {customerName}</p>}
+
+            {hasSeblak && (
+              <>
+                <p className="text-pink-600 font-extrabold uppercase mt-1">
+                  &gt;&gt; {spicyLevel} &lt;&lt;
+                </p>
+                {seblakNote && (
+                  <p className="text-gray-800 font-bold mt-1 uppercase">
+                    * {seblakNote}
+                  </p>
+                )}
+              </>
             )}
           </div>
           <p className="text-center mb-1">---------------------------------</p>
@@ -63,6 +73,12 @@ export function Struck({
                     </p>
                   </div>
                 ))}
+              </div>
+            )}
+
+            {item.note && (
+              <div className="pl-2 text-[9px] mb-1 italic font-semibold">
+                * Catatan: {item.note}
               </div>
             )}
 
