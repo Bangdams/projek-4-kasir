@@ -52,7 +52,7 @@ export function Layout() {
 
   return (
     <BrowserRouter>
-      <div className="grid grid-cols-12 min-h-screen">
+      <div className="grid grid-cols-12 min-h-screen pb-25">
         <ProtectedRoute
           currentRole={userRole}
           allowedRoles={["kasir", "oprator"]}
