@@ -243,7 +243,7 @@ export function Home() {
     {
       id: 5,
       category: "seblak",
-      label: "Cuangki (1 bks)",
+      label: "Batagor Mini (1 bks)",
       image: cuangkiKecil,
       price: 1000,
       stock: 100,
@@ -361,7 +361,7 @@ export function Home() {
     {
       id: 22,
       category: "seblak",
-      label: "Batagor Goreng (1 bks)",
+      label: "Somay Kering (1 bks)",
       image: batagorGoreng,
       price: 2000,
       stock: 100,
@@ -401,7 +401,7 @@ export function Home() {
     {
       id: 27,
       category: "seblak",
-      label: "Kerupuk Hitam Panjang (1 pcs)",
+      label: "Kerupuk Jengkol (1 pcs)",
       image: kerupukHitam,
       price: 1000,
       stock: 100,
