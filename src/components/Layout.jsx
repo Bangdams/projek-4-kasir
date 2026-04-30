@@ -121,7 +121,7 @@ export function Layout() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.5, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="fixed bottom-5 md:right-20 left-10 text-white rounded-full shadow-lg cursor-pointer print:hidden"
+              className="fixed bottom-20 md:right-20 left-10 text-white rounded-full shadow-lg cursor-pointer print:hidden"
             >
               <img
                 src={arrowUp}

@@ -55,6 +55,7 @@ export function Home() {
   const [choose, setChoose] = useState(null);
   const [modalMode, setModalMode] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const categories = [
     { id: "all", label: "All", icon: foods, iconActive: foodsBlack },
@@ -502,10 +503,14 @@ export function Home() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
-  const filteredMenus =
-    isActive === "all"
-      ? menus
-      : menus.filter((menu) => menu.category === isActive);
+  const filteredMenus = menus.filter((menu) => {
+    const matchCategory = isActive === "all" || menu.category === isActive;
+    const matchSearch = menu.label
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return matchCategory && matchSearch;
+  });
 
   return (
     <>
@@ -513,6 +518,36 @@ export function Home() {
         <h2 className="md:text-3xl text-2xl mb-10 mt-5 font-semibold">
           Enjoy Working!
         </h2>
+
+        {/* 3. TAMBAHKAN UI SEARCH BAR DI SINI */}
+        <div className="relative mb-8 w-full md:max-w-md">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+            {/* Ikon Kaca Pembesar */}
+            <svg
+              className="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            className="block w-full p-3 pl-11 text-sm text-gray-900 border border-gray-300 rounded-2xl bg-white focus:ring-2 focus:ring-yellow-300 focus:border-yellow-300 shadow-sm transition-all outline-none"
+            placeholder="Cari makanan atau minuman..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+        {/* END UI SEARCH BAR */}
+
         <div className="text-center flex flex-row gap-2 overflow-x-scroll scroll-x-no-bar rounded-2xl">
           {categories.map((item) => (
             <div
@@ -592,7 +627,7 @@ export function Home() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="fixed bottom-4 right-6 z-40 md:hidden print:hidden">
+        <div className="fixed bottom-20 right-6 z-40 md:hidden print:hidden">
           <button
             onClick={() => setIsCartOpen(true)}
             className="bg-pink-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center relative cursor-pointer"
