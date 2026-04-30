@@ -36,6 +36,7 @@ import damplingAyam from "../../assets/images/dumplingAyam.png";
 import kerupukHitam from "../../assets/images/kerupukHitam.jpeg";
 import kerupukBintang from "../../assets/images/kerupukBintang.jpeg";
 import bihun from "../../assets/images/bihun.jpeg";
+import cumi from "../../assets/images/cumi.jpeg";
 
 import "./Home.css";
 
@@ -421,6 +422,14 @@ export function Home() {
       label: "Bihun (1 pcs)",
       image: bihun,
       price: 1000,
+      stock: 100,
+    },
+    {
+      id: 30,
+      category: "seblak",
+      label: "cumi (1 pcs)",
+      image: cumi,
+      price: 2000,
       stock: 100,
     },
     // End Seblak
