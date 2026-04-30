@@ -28,6 +28,14 @@ import baso from "../../assets/images/baso.jpeg";
 import batagorGoreng from "../../assets/images/batagorGoreng.jpeg";
 import ceker from "../../assets/images/ceker.jpeg";
 import otakotak from "../../assets/images/otakotak.png";
+import cuangkiKecil from "../../assets/images/cuangkiKecil.png";
+import bengbeng from "../../assets/images/bengbeng.png";
+import tehTarik from "../../assets/images/tehTarik.png";
+import odeng from "../../assets/images/odeng.jpeg";
+import damplingAyam from "../../assets/images/dumplingAyam.png";
+import kerupukHitam from "../../assets/images/kerupukHitam.jpeg";
+import kerupukBintang from "../../assets/images/kerupukBintang.jpeg";
+import bihun from "../../assets/images/bihun.jpeg";
 
 import "./Home.css";
 
@@ -221,7 +229,7 @@ export function Home() {
       category: "seblak",
       label: "Mie (1 pcs)",
       image: miePng,
-      price: 2000,
+      price: 1000,
       stock: 100,
     },
     {
@@ -236,16 +244,8 @@ export function Home() {
       id: 5,
       category: "seblak",
       label: "Cuangki (1 bks)",
-      image: kerupukPng,
+      image: cuangkiKecil,
       price: 1000,
-      stock: 100,
-    },
-    {
-      id: 6,
-      category: "seblak",
-      label: "Siomay Goreng (1 bks)",
-      image: kerupukPng,
-      price: 2000,
       stock: 100,
     },
     {
@@ -321,7 +321,7 @@ export function Home() {
     {
       id: 16,
       category: "seblak",
-      label: "RollFish (1 pcs)",
+      label: "Cikua (1 pcs)",
       image: rollFish,
       price: 2000,
       stock: 100,
@@ -329,7 +329,7 @@ export function Home() {
     {
       id: 17,
       category: "seblak",
-      label: "rollFish 2 (1 pcs)",
+      label: "Blaster (1 pcs)",
       image: rollFish2,
       price: 2000,
       stock: 100,
@@ -377,9 +377,49 @@ export function Home() {
     {
       id: 24,
       category: "seblak",
-      label: "Otak Otak (1 pcs)",
+      label: "RollFish (1 pcs)",
       image: otakotak,
       price: 3000,
+      stock: 100,
+    },
+    {
+      id: 25,
+      category: "seblak",
+      label: "Odeng (1 pcs)",
+      image: odeng,
+      price: 2500,
+      stock: 100,
+    },
+    {
+      id: 26,
+      category: "seblak",
+      label: "damplingAyam (1 pcs)",
+      image: damplingAyam,
+      price: 2500,
+      stock: 100,
+    },
+    {
+      id: 27,
+      category: "seblak",
+      label: "Kerupuk Hitam Panjang (1 pcs)",
+      image: kerupukHitam,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 28,
+      category: "seblak",
+      label: "Kerupuk Bintang (1 pcs)",
+      image: kerupukBintang,
+      price: 1000,
+      stock: 100,
+    },
+    {
+      id: 29,
+      category: "seblak",
+      label: "Bihun (1 pcs)",
+      image: bihun,
+      price: 1000,
       stock: 100,
     },
     // End Seblak
@@ -415,6 +455,22 @@ export function Home() {
       label: "Air Putih Botol",
       image: mineralWater,
       price: 3000,
+      stock: 300,
+    },
+    {
+      id: 1210,
+      category: "drink",
+      label: "Beng Beng Drink",
+      image: bengbeng,
+      price: 7000,
+      stock: 300,
+    },
+    {
+      id: 1220,
+      category: "drink",
+      label: "Teh Tarik",
+      image: tehTarik,
+      price: 7000,
       stock: 300,
     },
     // edn Minuman
