@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { formatRupiah } from "../helper/FormatRupiah";
+import { useEffect } from "react";
 
 export function Modal({
   isOpen,
@@ -14,25 +15,36 @@ export function Modal({
   setMenus,
 }) {
   const [localAddOns, setLocalAddOns] = useState(choose?.selectedAddOns || []);
+  const [note, setNote] = useState(choose?.note || "");
 
-  // [BARU] Handler untuk checkbox add-on
+  // 1. [BARU] State untuk menangkap harga manual (default mengikuti choose.price jika ada)
+  const [manualPrice, setManualPrice] = useState(choose?.price || 0);
+
+  // 2. [BARU] Reset state manualPrice setiap kali modal dibuka/choose berubah
+  useEffect(() => {
+    if (choose) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setManualPrice(choose.price || 0);
+    }
+  }, [choose]);
+
   const toggleAddOn = (addon) => {
     setLocalAddOns((prev) => {
       const isExist = prev.find((a) => a.id === addon.id);
       if (isExist) {
-        return prev.filter((a) => a.id !== addon.id); // Hapus jika sudah ada
+        return prev.filter((a) => a.id !== addon.id);
       } else {
-        return [...prev, addon]; // Tambahkan jika belum ada
+        return [...prev, addon];
       }
     });
   };
 
-  // 1. [BARU] State untuk menangkap catatan
-  const [note, setNote] = useState(choose?.note || "");
-
-  // Method Function Update
   const updateOrder = (choose, count) => {
-    const basePrice = choose.price;
+    // 3. [UPDATE] Gunakan manualPrice jika isManualPrice true, jika tidak gunakan choose.price
+    const basePrice = choose.isManualPrice
+      ? parseInt(manualPrice) || 0
+      : choose.price;
+
     const addonsPrice = localAddOns.reduce((sum, a) => sum + a.price, 0);
     const unitPrice = basePrice + addonsPrice;
     const finalTotal = unitPrice * count;
@@ -60,7 +72,8 @@ export function Modal({
                 selectedAddOns: localAddOns,
                 total: finalTotal,
                 note: note,
-              } // <-- Tambah note
+                price: basePrice, // [UPDATE] Simpan harga terbaru ke keranjang
+              }
             : order,
         );
       } else {
@@ -73,7 +86,8 @@ export function Modal({
             selectedAddOns: localAddOns,
             total: finalTotal,
             note: note,
-          }, // <-- Tambah note
+            price: basePrice, // [UPDATE] Simpan harga terbaru ke keranjang
+          },
         ];
       }
     });
@@ -86,8 +100,13 @@ export function Modal({
     }
   };
 
-  // Menghitung subtotal sementara untuk ditampilkan di tombol
-  const currentBasePrice = choose ? parseInt(choose.price) || 0 : 0;
+  // 4. [UPDATE] Dinamika perhitungan UI di tombol dan header
+  const currentBasePrice = choose?.isManualPrice
+    ? parseInt(manualPrice) || 0
+    : choose
+      ? parseInt(choose.price) || 0
+      : 0;
+
   const currentAddonsPrice = localAddOns.reduce(
     (sum, a) => sum + (parseInt(a.price) || 0),
     0,
@@ -111,14 +130,35 @@ export function Modal({
             transition={{ duration: 0.3 }}
           >
             <h2 className="text-xl font-bold mb-4 border-b pb-2">
-              {modalMode === "add"
-                ? `Tambah | ${formatRupiah(currentTotalPreview)}`
-                : `Update | ${formatRupiah(currentTotalPreview)}`}
-              {/* {choose.label} */}
+              {choose.label} {/* Tampilkan Nama Menu */}
             </h2>
 
-            {/* Area Scrollable untuk Add-ons (Jika isinya banyak) */}
             <div className="overflow-y-auto mb-6 pr-2">
+              {/* 5. [BARU] Input Harga Manual Render Conditional */}
+              {choose.isManualPrice && (
+                <div className="mb-5 bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+                  <h3 className="font-semibold text-gray-800 mb-2">
+                    Tentukan Harga Sendiri:
+                  </h3>
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium">
+                      Rp
+                    </span>
+                    <input
+                      type="number"
+                      value={manualPrice === 0 ? "" : manualPrice} // Kosongkan jika 0 agar mudah diketik
+                      onChange={(e) => setManualPrice(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2.5 border border-gray-300 rounded-lg outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500 font-medium text-lg"
+                      placeholder="Masukkan harga"
+                      autoFocus={modalMode === "add"}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-2">
+                    *Ketik harga total paket seblak tanpa titik
+                  </p>
+                </div>
+              )}
+
               {/* Seksi Add-on Render */}
               {choose.addOns && choose.addOns.length > 0 && (
                 <div className="mb-5">

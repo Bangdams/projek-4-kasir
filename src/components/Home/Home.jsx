@@ -37,6 +37,7 @@ import kerupukHitam from "../../assets/images/kerupukHitam.jpeg";
 import kerupukBintang from "../../assets/images/kerupukBintang.jpeg";
 import bihun from "../../assets/images/bihun.jpeg";
 import cumi from "../../assets/images/cumi.jpeg";
+import seblak from "../../assets/images/seblak.png";
 
 import "./Home.css";
 
@@ -210,6 +211,15 @@ export function Home() {
     // End Nasi Goreng
 
     // Menu Seblak
+    {
+      id: 201,
+      category: "seblak",
+      label: "Seblak Paket",
+      image: seblak,
+      price: 0,
+      stock: 1000,
+      isManualPrice: true,
+    },
     {
       id: 1,
       category: "seblak",
